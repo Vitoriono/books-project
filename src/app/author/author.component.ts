@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { IAuthor, IFitness } from '../interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-author',
@@ -9,7 +10,7 @@ import { IAuthor, IFitness } from '../interfaces';
   styleUrls: ['./author.component.scss']
 })
 export class AuthorComponent {
-  constructor(private apiServ: ApiService) { }
+  constructor(private apiServ: ApiService, private router: Router) { }
 
   declare authorForm: FormGroup;
   declare author: Array<IAuthor>;
@@ -48,5 +49,6 @@ export class AuthorComponent {
         this.author.push(data);
       })
     }
+    this.router.navigate(['/']);
   }
 }

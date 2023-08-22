@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackendService } from './services/backend.service';
 import { MainComponent } from './main/main.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MainComponent } from './main/main.component';
     HeaderComponent,
     AuthorComponent,
     BookComponent,
-    MainComponent
+    MainComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

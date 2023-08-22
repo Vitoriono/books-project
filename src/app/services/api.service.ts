@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { IAuthor, IFitness } from '../interfaces';
 
 
@@ -17,9 +17,22 @@ export class ApiService  {
     return this.http.get<Array<IAuthor>>(this.URL);
   }
 
-   postElem(exercise: IAuthor): Observable<IAuthor> {
-	console.log(exercise);
+   getPostById(id: number): Observable<IAuthor> {
+    return this.http
+      .get<IAuthor>(`${this.URL}/${id}`)
+      .pipe(map((res: any) => res));
+  }
+
+  editElem(name: IFitness): Observable<IFitness>{
+    return this.http.put<IFitness>(`${this.URL}/${name.id}`, name);
+  }
+
+  postElem(exercise: IAuthor): Observable<IAuthor> {
     return this.http.post<IAuthor>(this.URL, exercise);
+  }
+
+  deleteElem(id: number): Observable<IAuthor> {
+    return this.http.delete<IAuthor>(`${this.URL}/${id}`);
   }
  
 }

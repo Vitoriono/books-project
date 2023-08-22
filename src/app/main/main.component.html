@@ -5,7 +5,7 @@
 		</div>
 	</div>
 </ng-container>
-<ng-container class="container" *ngIf="!loading">
+<ng-container *ngIf="!loading">
 	
 		<h2>Книжкова полиця</h2>
 	
@@ -25,6 +25,11 @@
 				{{author.id}}	
 			</li>
 		</ul>
-		<button type="button" class="btn btn-outline-secondary button" (click)="getIdAuthor(author.id)">Edit or delete</button>
+		<div class="buttons">
+			<button type="button" class="btn btn-outline-secondary button" [routerLink]="['author', author.id]">Редагувати</button>
+			<button type="button" class="btn btn-outline-secondary button" (click)="deleteAuthor(author.id)">Видалити</button>
+			<button type="button" class="btn btn-outline-secondary button" (click)="getIdAuthor(author.id)">Деталі</button>
+		</div>
+		
 	</div>
 </ng-container>

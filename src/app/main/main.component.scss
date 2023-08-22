@@ -1,13 +1,18 @@
-// .container{
-// 	display: flex;
-// 	align-items: center;
-// 	justify-content: center;
-// }
+.container{
+	display: flex;
+	// align-items: center;
+	justify-content: center;
+	// width: 700px;
+}
 
 .button{
 	margin: 2px;
 	height: 30px;
 	padding: 2px 5px 0px 5px;
+}
+
+.buttons{
+	margin-left: 200px;
 }
 
 h2 {

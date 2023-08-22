@@ -52,10 +52,10 @@ export class MainComponent {
     // })
   }
 
-  deleteFit(id: number){
-    // this.apiServ.deleteElem(id).subscribe(() => {
-    //   this.getFitList();
-    // })
+  deleteAuthor(id: number){
+    this.apiServ.deleteElem(id).subscribe(() => {
+      this.getFitList();
+    })
   }
 
   ngOnInit(): void {

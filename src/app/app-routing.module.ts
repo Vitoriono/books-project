@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthorComponent } from './author/author.component';
 import { BookComponent } from './book/book.component';
 import { MainComponent } from './main/main.component';
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   {path: '',  component: MainComponent},
   {path: 'author',  component: AuthorComponent},
-  {path: 'book', component: BookComponent}
+  {path: 'book', component: BookComponent},
+  { path: 'author/:id', component: EditComponent },
 ];
 
 @NgModule({
