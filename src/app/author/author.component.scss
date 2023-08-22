@@ -1,0 +1,40 @@
+.main {
+	margin: 70px 0 40px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.mail {
+	width: 95px;
+}
+
+h2 {
+	font-size: 32px;
+	margin-bottom: 40px;
+}
+
+.btn {
+	position: sticky;
+	left: 80%;
+}
+
+pre {
+	color: black;
+	font-size: 18px;
+}
+
+
+form {
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.ng-valid {
+	border: 3px solid rgb(105, 247, 4);
+}
+
+.ng-invalid {
+	border: 3px solid rgb(239, 175, 196);
+}

@@ -1,0 +1,39 @@
+<div class="main">
+	<h2>Reactive Form</h2>
+	<form novalidate [formGroup]="authorForm" (ngSubmit)="onSubmit(authorForm)">
+		<div class="input-group mb-3">
+			<span class="input-group-text mail" id="basic-addon1">Прізвище</span>
+			<input required type="text" class="form-control" formControlName="lastName" placeholder="Add e-mail">
+		</div>
+		<div class="input-group mb-3">
+			<span class="input-group-text mail" id="basic-addon1">Ім'я</span>
+			<input required type="text" class="form-control" formControlName="name" placeholder="Add e-mail">
+		</div>
+		<div class="input-group mb-3">
+			<span class="input-group-text mail" id="basic-addon1">По батькові</span>
+			<input required type="text" class="form-control" formControlName="father" placeholder="Add e-mail">
+		</div>
+		<div class="input-group mb-3">
+			<span class="input-group-text" id="basic-addon1">Дата народження</span>
+			<input #resFit required type="password" class="form-control" formControlName="dateBorn" placeholder="Add password">
+		</div>
+		<div class="btn">
+			<input type="submit" class="btn btn-outline-secondary" value="Register" [disabled]="authorForm.invalid">
+		</div>
+	</form>
+	<pre>
+    {{authorForm.value | json}}
+  </pre>
+</div>
+
+
+<div>
+	<ul *ngFor="let fitness of author">
+		<li>{{fitness.lastName}}</li>
+		<li>{{fitness.name}}</li>
+		<li>{{fitness.father}}</li>
+		<li>{{fitness.dateBorn}}</li>
+	</ul>
+</div>
+
+

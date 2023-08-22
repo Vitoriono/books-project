@@ -1,0 +1,35 @@
+<div class="main">
+	<h2>Reactive Form</h2>
+	<form novalidate [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm)">
+		<div class="input-group mb-3">
+			<span class="input-group-text mail" id="basic-addon1">Назва</span>
+			<input required type="text" class="form-control" formControlName="title" placeholder="Add e-mail">
+		</div>
+		<div class="input-group mb-3">
+			<span class="input-group-text mail" id="basic-addon1">Сторінки</span>
+			<input required type="text" class="form-control" formControlName="quantity" placeholder="Add e-mail">
+		</div>
+		<div class="input-group mb-3" >
+			<span class="input-group-text" id="basic-addon1">Жанри</span>
+			<select formControlName="genre" class="form-control mb-3 category" type="category" name="category"
+				placeholder="World">
+				<option *ngFor="let category of categories" >{{category}}</option>
+				<!-- <option value="Technology">Technology</option>
+				<option value="Design">Design</option>
+				<option value="Culture">Culture</option>
+				<option value="Business">Business</option>
+				<option value="Opinion">Opinion</option>
+				<option value="Science">Science</option>
+				<option value="Health">Health</option>
+				<option value="Style">Style</option>
+				<option value="Travel">Travel</option> -->
+			</select>
+		</div>
+		<div class="btn">
+			<input type="submit" class="btn btn-outline-secondary" value="Register" [disabled]="bookForm.invalid">
+		</div>
+	</form>
+	<pre>
+    {{bookForm.value | json}}
+  </pre>
+</div>
