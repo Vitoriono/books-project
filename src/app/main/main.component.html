@@ -1,0 +1,30 @@
+<ng-container *ngIf="loading">
+	<div class="patch">
+		<div class="spinner-border text-primary spinner" role="status">
+			<span class="sr-only"></span>
+		</div>
+	</div>
+</ng-container>
+<ng-container class="container" *ngIf="!loading">
+	
+		<h2>Книжкова полиця</h2>
+	
+	
+	<div class="subtitles">
+		<h3>Автори</h3>
+		<h3>Кількість книжок</h3>
+		<h3>Умови</h3>
+	</div>
+	
+	<div class="list" *ngFor="let author of fitList">
+		<ul>
+			<li>{{author.id}} {{author.lastName}} {{author.name[0]}}. {{author.father[0]}}.</li>
+		</ul>
+		<ul>
+			<li>
+				{{author.id}}	
+			</li>
+		</ul>
+		<button type="button" class="btn btn-outline-secondary button" (click)="getIdAuthor(author.id)">Edit or delete</button>
+	</div>
+</ng-container>

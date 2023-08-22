@@ -10,13 +10,15 @@ import { BookComponent } from './book/book.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackendService } from './services/backend.service';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AuthorComponent,
-    BookComponent
+    BookComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
