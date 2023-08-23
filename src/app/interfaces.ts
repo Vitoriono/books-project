@@ -10,3 +10,11 @@ export interface IAuthor {
 	father: string, 
 	dateBorn: string
 }
+
+export interface IBook {
+	id: number;
+	title: string;
+	pages: number;
+	genre: string;
+	foreignKey: number;
+}

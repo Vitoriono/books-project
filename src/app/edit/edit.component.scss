@@ -1,80 +1,18 @@
 
-.form{
-	margin-top: 70px;
+.container{
+	margin-top: 50px;
 }
 
-h2 {
-	margin: 40px 0 40px 20px;
-	font-size: 40px;
-}
+// .buttons{
+// 	display: flex;
+// 	flex-direction: column;
+// }
 
-.main {
+.each{
 	display: flex;
-	flex-direction: column;
-}
-
-.form {
-	margin-bottom: 20px;
-	border-bottom: 1px solid rgb(39, 100, 59);
-	padding: 0 20px 20px 20px;
-}
-
-span {
-	font-size: 27px;
-	color: rgb(39, 100, 59);
-}
-
-.buttons {
-	margin: auto;
-}
-
-.dark {
-	margin-right: 40px;
-	background-color: rgb(39, 100, 59);
-}
-
-.dark:hover {
-	background-color: white;
-	color: black;
-}
-
-.light:hover {
-	background-color: rgb(39, 100, 59);
-	color: white;
-}
-
-.list {
-	margin-top: 25px;
-}
-
-.delete {
-	cursor: pointer;
-	color: rgb(144, 18, 18);
-	margin-right: 10px;
-}
-
-.edit {
-	color: rgb(93, 0, 255);
-	margin-left: 10px;
-	cursor: pointer;
-}
-
-.each {
-	margin-bottom: 15px;
-	border: solid 1px rgb(39, 100, 59);
-	padding: 20px;
-	border-radius: 20px;
-	display: flex;
+	flex-direction: row;
+	padding: 5px 40px 5px 40px;
 	justify-content: space-between;
-}
-
-.patch {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(136, 136, 204, 0.5);
 }
 
 .spinner {
@@ -85,4 +23,14 @@ span {
 	width: 40px;
 	height: 40px;
 	margin-right: -50%;
+}
+
+
+.list{
+	width: 500px;
+	margin-top: 40px;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	
 }

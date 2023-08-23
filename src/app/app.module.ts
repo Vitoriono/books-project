@@ -34,4 +34,4 @@ import { EditComponent } from './edit/edit.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
