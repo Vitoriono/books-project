@@ -34,6 +34,7 @@ export class ApiService  {
   }
 
   editElem(author: IAuthor): Observable<IAuthor>{
+    console.log(author.id);
     return this.http.put<IAuthor>(`${this.URL}/${author.id}`, author);
   }
 

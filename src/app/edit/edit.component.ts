@@ -22,21 +22,15 @@ export class EditComponent {
   constructor(
     private apiServise: ApiService,
     private router: ActivatedRoute,
-    private rout: Router
+    private route: Router
   ) {}
 
   ngOnInit() {
     this.getAllDatas();
-    
-    
   }
-
-
-   
 
   editAuthorForm!: FormGroup
   something: string = 'Hello';
-
 
   getAllDatas(){
      this.post$ = this.router.params.pipe(
@@ -51,28 +45,24 @@ export class EditComponent {
   }
 
 
+  editBorn(lastName: string, name: string, father: string, dateBorn: string){
+    
+    const editAuthor = {
+      lastName,
+      name,
+      father,
+      dateBorn
+    }
 
-  // getAlls(){
-  //   this.post$.subscribe(x => this.editAuthor = x);
-  // }
-
-
-  //  getForm(){
-  //   this.editAuthorForm = new FormGroup({
-  //     lastName: new FormControl(this.editAuthor.lastName, Validators.required),
-  //       name: new FormControl(this.editAuthor.lastName, Validators.required),
-  //       pater: new FormControl(this.editAuthor.lastName, Validators.required),
-  //       dateBorn: new FormControl(this.editAuthor.lastName, Validators.required)
-  //   })
-  // }
-
-
-
-  // editSubmit(editAuthorForm: FormGroup){
-  //   console.log('Author', editAuthorForm.value);
-  // }
-
-  
+    this.post$ = this.router.params.pipe(
+      switchMap((params: Params) => {
+        this.route.navigate(['/']);
+        return this.apiServise.editElem({...editAuthor, id: +params['id']});
+        
+      })
+    )
+    
+  }
 
  
 
@@ -83,56 +73,54 @@ export class EditComponent {
 
 
 
- holdName(author: IAuthor, input: HTMLInputElement){
-    this.editAuthor = author;
-    input.value = author.name;
-  }
+//  holdName(author: IAuthor, input: HTMLInputElement){
+//     this.editAuthor = author;
+//     input.value = author.name;
+//   }
 
-editName(newName: string){
-    this.editAuthor.name = newName;
-    this.apiServise.editElem(this.editAuthor).subscribe(() => {
-    })
-  }
-
-
-holdLastName(author: IAuthor, input: HTMLInputElement){
-  this.editAuthor = author;
-  input.value = author.lastName;
-}
+// editName(newName: string){
+//     this.editAuthor.name = newName;
+//     this.apiServise.editElem(this.editAuthor).subscribe(() => {
+//     })
+//   }
 
 
-editLastName(newName: string){
-  this.editAuthor.lastName = newName;
-  this.apiServise.editElem(this.editAuthor).subscribe(() => {
-  })
-}
+// holdLastName(author: IAuthor, input: HTMLInputElement){
+//   this.editAuthor = author;
+//   input.value = author.lastName;
+// }
 
 
-  holdPater(author: IAuthor, input: HTMLInputElement){
-    this.editAuthor = author;
-    input.value = author.father;
-  }
+// editLastName(newName: string){
+//   this.editAuthor.lastName = newName;
+//   this.apiServise.editElem(this.editAuthor).subscribe(() => {
+//   })
+
+//   console.log('Hold Value', newName);
+// }
 
 
-  editPater(newName: string){
-    this.editAuthor.father = newName;
-    this.apiServise.editElem(this.editAuthor).subscribe(() => {
-    })
-  }
+  // holdPater(author: IAuthor, input: HTMLInputElement){
+  //   this.editAuthor = author;
+  //   input.value = author.father;
+  // }
+
+
+  // editPater(newName: string){
+  //   this.editAuthor.father = newName;
+  //   this.apiServise.editElem(this.editAuthor).subscribe(() => {
+  //   })
+  // }
 
 
 
-  holdBorn(author: IAuthor, input: HTMLInputElement){
-    this.editAuthor = author;
-    input.value = author.dateBorn;
-  }
+  // holdBorn(author: IAuthor, input: HTMLInputElement){
+  //   this.editAuthor = author;
+  //   input.value = author.dateBorn;
+  // }
 
 
-  editBorn(newName: string){
-    this.editAuthor.dateBorn = newName;
-    this.apiServise.editElem(this.editAuthor).subscribe(() => {
-    })
-  }
+ 
 
   // holdBook(book: IBook, input: HTMLInputElement){
   //   this.editBook
@@ -146,7 +134,7 @@ editLastName(newName: string){
         alert('Book not deleted!');
       } else {
         alert('Book deleted!');
-        // this.rout.navigate(['/']);
+        // this.route.navigate(['/']);
         this.getAllDatas()
       }
     });

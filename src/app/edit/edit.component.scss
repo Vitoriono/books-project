@@ -3,6 +3,23 @@
 	margin-top: 50px;
 }
 
+.edit-author{
+	display: flex;
+	flex-direction: column;
+}
+
+input{
+	width: 350px;
+}
+
+
+.btn-author{
+	margin-top: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+
 .allbooks{
 	display: flex;
 	flex-direction: column;
@@ -43,7 +60,6 @@ ul {
 .each{
 	display: flex;
 	flex-direction: row;
-	padding: 5px 40px 5px 40px;
 	justify-content: space-between;
 }
 

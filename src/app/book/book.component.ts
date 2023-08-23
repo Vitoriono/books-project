@@ -47,7 +47,7 @@ export class BookComponent {
     }
     this.route.navigate(['/']);
 
-    console.log('I am here', {...lastBook, foreignKey: this.foreignKey});
+    // console.log('I am here', {...lastBook, foreignKey: this.foreignKey});
 
 }
 

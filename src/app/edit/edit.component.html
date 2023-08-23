@@ -3,65 +3,50 @@
 
 
 <div class="container">
-	<!-- <div class="edit-form">
-		<form novalidate [formGroup]="editAuthorForm" (ngSubmit)="editSubmit(editAuthorForm)">
-			<input required formControlName="lastName" type="text" class="form-control" placeholder="Название" />
-			<input required formControlName="name" type="text" class="form-control" placeholder="Контент" />
-			<input required formControlName="pater" type="text" class="form-control" placeholder="Название" />
-			<input required formControlName="dateBorn" type="text" class="form-control" placeholder="Контент" />
-		</form>
-		<div class="btn">
-			<input type="submit" class="btn btn-outline-secondary" [disabled]="editAuthorForm.invalid">
-		</div>
-	</div> -->
+	
 	
 
 
 
 	<h2>Редагування</h2>
-	<div class="input-group flex-nowrap form">
-		<span class="input-group-text" id="addon-wrapping">&#9672;</span>
-		<input #resFit type="text" class="form-control" placeholder="Add exercise" value="hello">
-	</div>
-
 	
-	<div *ngIf="post$ | async as post" class="list" >
-		<div class="each">
-			<input  type="text" class="form-control" placeholder="Add exercise" value="{{post.lastName}}">
+<div *ngIf="post$ | async as post" class="list" >
 
-			<!-- <span>Прізвище: </span>
-			<span><i>{{post.name}}</i></span> -->
-			<!-- <span (click)="holdLastName(post, resFit)" class="edit">&#9998;</span> -->
-			<button (click)="editLastName(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
+	<div class="edit-author">
+		<div class="block-author">
+			<div class="each">
+				<span><i>Прізвище</i></span>
+				<input #lastNameVal type="text" class="form-control" placeholder="Add exercise" value="{{post.lastName}}">
+			</div>
+			<div class="each">
+				<span><i>Ім'я</i></span>
+				<input #nameVal type="text" class="form-control" placeholder="Add exercise" value="{{post.name}}">
+			</div>
+			<div class="each">
+				<span><i>По батькові</i></span>
+				<input #father type="text" class="form-control" placeholder="Add exercise" value="{{post.father}}">
+			</div>
+			<div class="each">
+				<span><i>Дата народж.</i></span>
+				<input #dateBorn type="text" class="form-control" placeholder="Add exercise" value="{{post.dateBorn}}">
+			</div>
 		</div>
-		<div class="each">
-			<input  type="text" class="form-control" placeholder="Add exercise" value="{{post.name}}">
-
-			<!-- <span>Ім'я: </span>
-			<span><i>{{post.lastName}}</i></span> -->
-			<!-- <span (click)="holdName(post, resFit)" class="edit">&#9998;</span> -->
-			<button (click)="editName(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
+		<div class="btn-author">
+			<div>
+				<button (click)="editBorn(lastNameVal.value, nameVal.value, father.value, dateBorn.value)" type="button"
+					class="btn btn-outline-dark light">Редагувати</button>
+			</div>
 		</div>
-		<div class="each">
-			<input #resFit type="text" class="form-control" placeholder="Add exercise" value="{{post.father}}">
-
-			<!-- <span>По батькові: </span>
-			<span><i>{{post.father}}</i></span> -->
-			<!-- <span (click)="holdPater(post, resFit)" class="edit">&#9998;</span> -->
-			<button (click)="editPater(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
-		</div>
-		<div class="each">
-			<input #resFit type="text" class="form-control" placeholder="Add exercise" value="{{post.dateBorn}}">
-
-			<!-- <span>Народження: </span>
-			<span><i>{{post.dateBorn}}</i></span> -->
-			<!-- <span (click)="holdBorn(post, resFit)" class="edit">&#9998;</span> -->
-			<button (click)="editBorn(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
-		</div>
+	</div>
+		
 		<div class="each">
 			<span>Книжка: </span>
 			<a [routerLink]="['book']">Додати</a>
 		</div>
+	
+		
+
+
 		<div *ngFor="let book of booksList" class="blockbook">
 			<div class="allbooks">
 				<span>{{book.title}}</span>
