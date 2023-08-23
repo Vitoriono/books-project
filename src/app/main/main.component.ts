@@ -53,7 +53,12 @@ export class MainComponent {
   }
 
   deleteAuthor(id: number){
-    this.apiServ.deleteElem(id).subscribe(() => {
+    this.apiServ.deleteElem(id).subscribe((data) => {
+      if(!data && data === false){
+        alert('Author not deleted!');
+      } else {
+        alert('Author deleted!');
+      }
       this.getFitList();
     })
   }

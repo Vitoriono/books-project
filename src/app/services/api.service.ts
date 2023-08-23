@@ -33,8 +33,8 @@ export class ApiService  {
       .pipe(map((res: any) => res));
   }
 
-  editElem(author: IAuthor): Observable<IFitness>{
-    return this.http.put<IFitness>(`${this.URL}/${author.id}`, author);
+  editElem(author: IAuthor): Observable<IAuthor>{
+    return this.http.put<IAuthor>(`${this.URL}/${author.id}`, author);
   }
 
 
@@ -48,12 +48,16 @@ export class ApiService  {
     return this.http.post<IBook>(this.booksURL, book);
   }
 
-  
+
 
 
 
   deleteElem(id: number): Observable<IAuthor> {
     return this.http.delete<IAuthor>(`${this.URL}/${id}`);
+  }
+
+  deleteBook(id: number): Observable<IBook> {
+    return this.http.delete<IBook>(`${this.booksURL}/${id}`);
   }
  
 }

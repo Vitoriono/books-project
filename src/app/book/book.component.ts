@@ -20,7 +20,7 @@ export class BookComponent {
 
   declare bookForm: FormGroup;
   declare foreignKey: number | unknown;
-   books: Array<IBook> = [];
+  books: Array<IBook> = [];
 
   categories: Array<string> = ['Technology', 'Health', 'Opinion', 'Culture']
 

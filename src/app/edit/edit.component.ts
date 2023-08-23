@@ -12,7 +12,8 @@ import { Observable, switchMap } from 'rxjs';
 export class EditComponent {
   declare post$: Observable<IAuthor>;
   declare login: string;
-  declare editingFit: IAuthor;
+  declare editAuthor: IAuthor;
+  declare editBook: IBook;
   declare booksList: Array<IBook>;
 
   constructor(
@@ -22,9 +23,12 @@ export class EditComponent {
   ) {}
 
   ngOnInit() {
-  
+    this.getAllDatas();
+  }
 
-    this.post$ = this.router.params.pipe(
+
+  getAllDatas(){
+     this.post$ = this.router.params.pipe(
       switchMap((params: Params) => {
         
         this.apiServise.getBooks()
@@ -34,46 +38,75 @@ export class EditComponent {
         return this.apiServise.getPostById(params['id']);
       })
     );
-    
   }
 
 
-  // getAllBooks(){
-   
-  // }
+ holdName(author: IAuthor, input: HTMLInputElement){
+    this.editAuthor = author;
+    input.value = author.name;
+  }
 
-
-
-  beginEditFit(fit: IAuthor , input: HTMLInputElement){
-    this.editingFit = fit
-    input.value = fit.lastName;
+editName(newName: string){
+    this.editAuthor.name = newName;
+    this.apiServise.editElem(this.editAuthor).subscribe(() => {
+    })
   }
 
 
-  completEditFit(newFit: string){
-    this.editingFit.lastName = newFit;
-    this.apiServise.editElem(this.editingFit).subscribe(() => {
+holdLastName(author: IAuthor, input: HTMLInputElement){
+  this.editAuthor = author;
+  input.value = author.lastName;
+}
+
+
+editLastName(newName: string){
+  this.editAuthor.lastName = newName;
+  this.apiServise.editElem(this.editAuthor).subscribe(() => {
+  })
+}
+
+
+  holdPater(author: IAuthor, input: HTMLInputElement){
+    this.editAuthor = author;
+    input.value = author.father;
+  }
+
+
+  editPater(newName: string){
+    this.editAuthor.father = newName;
+    this.apiServise.editElem(this.editAuthor).subscribe(() => {
     })
   }
 
 
 
+  holdBorn(author: IAuthor, input: HTMLInputElement){
+    this.editAuthor = author;
+    input.value = author.dateBorn;
+  }
 
 
+  editBorn(newName: string){
+    this.editAuthor.dateBorn = newName;
+    this.apiServise.editElem(this.editAuthor).subscribe(() => {
+    })
+  }
 
-
-
-
-
-
-  // deletePost(id: number) {
-  //   this.apiServise.deletePost(id).subscribe((data) => {
-  //     if (!data && data === false) {
-  //       alert('Post not deleted!');
-  //     } else {
-  //       alert('Post deleted!');
-  //       this.rout.navigate(['/']);
-  //     }
-  //   });
+  // holdBook(book: IBook, input: HTMLInputElement){
+  //   this.editBook
   // }
+
+
+
+  deleteBook(id: number) {
+    this.apiServise.deleteBook(id).subscribe(data => {
+      if (!data && data === false) {
+        alert('Book not deleted!');
+      } else {
+        alert('Book deleted!');
+        // this.rout.navigate(['/']);
+        this.getAllDatas()
+      }
+    });
+  }
 }

@@ -5,43 +5,51 @@
 		<span class="input-group-text" id="addon-wrapping">&#9672;</span>
 		<input #resFit type="text" class="form-control" placeholder="Add exercise">
 	</div>
+
+	
 	<div *ngIf="post$ | async as post" class="list" >
 		<div class="each">
 			<span>Прізвище: </span>
 			<span><i>{{post.name}}</i></span>
-			<span (click)="beginEditFit(post, resFit)" class="edit">&#9998;</span>
-			<button (click)="completEditFit(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
+			<span (click)="holdLastName(post, resFit)" class="edit">&#9998;</span>
+			<button (click)="editLastName(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
 		</div>
 		<div class="each">
 			<span>Ім'я: </span>
 			<span><i>{{post.lastName}}</i></span>
-			<span (click)="beginEditFit(post, resFit)" class="edit">&#9998;</span>
-			<button (click)="completEditFit(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
+			<span (click)="holdName(post, resFit)" class="edit">&#9998;</span>
+			<button (click)="editName(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
 		</div>
 		<div class="each">
 			<span>По батькові: </span>
-			<span><i>{{post.lastName}}</i></span>
-			<span (click)="beginEditFit(post, resFit)" class="edit">&#9998;</span>
-			<button (click)="completEditFit(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
+			<span><i>{{post.father}}</i></span>
+			<span (click)="holdPater(post, resFit)" class="edit">&#9998;</span>
+			<button (click)="editPater(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
 		</div>
 		<div class="each">
 			<span>Народження: </span>
-			<span><i>{{post.lastName}}</i></span>
-			<span (click)="beginEditFit(post, resFit)" class="edit">&#9998;</span>
-			<button (click)="completEditFit(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
+			<span><i>{{post.dateBorn}}</i></span>
+			<span (click)="holdBorn(post, resFit)" class="edit">&#9998;</span>
+			<button (click)="editBorn(resFit.value)" type="button" class="btn btn-outline-dark light">Змінити</button>
 		</div>
 		<div class="each">
 			<span>Книжка: </span>
 			<a [routerLink]="['book']">Додати</a>
 		</div>
-		<div *ngFor="let book of booksList">
-			<ul>
-				<li>
-					{{book.title}}
-				</li><li>
-					{{book.foreignKey}}
-				</li>
-			</ul>
+		<div *ngFor="let book of booksList" class="blockbook">
+			<div class="allbooks">
+				<span>{{book.title}}</span>
+				<span>{{book.genre}}</span>
+				<span>{{book.pages}}c.</span>
+			</div>
+			
+			<div class="btnblock">
+				<!-- <span (click)="holdBook(book, resFit)" class="edit">&#9998;</span> -->
+				<div class="bookbtn">
+					<!-- <button type="button" (click)="editBook(resFit.value)" class="btn btn-outline-dark light btn-book">Змінити</button> -->
+					<button type="button" (click)="deleteBook(book.id)" class="btn btn-outline-dark light btn-book">Видалити</button>
+				</div>	
+			</div>
 		</div>
 	</div>
 </div>
