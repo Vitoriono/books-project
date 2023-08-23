@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IAuthor, IBook } from '../interfaces';
 import { Observable, switchMap } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-edit',
@@ -16,6 +17,8 @@ export class EditComponent {
   declare editBook: IBook;
   declare booksList: Array<IBook>;
 
+  declare name: any;
+
   constructor(
     private apiServise: ApiService,
     private router: ActivatedRoute,
@@ -24,14 +27,21 @@ export class EditComponent {
 
   ngOnInit() {
     this.getAllDatas();
+    
+    
   }
+
+
+   
+
+  editAuthorForm!: FormGroup
+  something: string = 'Hello';
 
 
   getAllDatas(){
      this.post$ = this.router.params.pipe(
       switchMap((params: Params) => {
-        
-        this.apiServise.getBooks()
+      this.apiServise.getBooks()
         .subscribe( data=> this.booksList = data
           .filter(value => value.foreignKey == params['id']));
 
@@ -39,6 +49,38 @@ export class EditComponent {
       })
     );
   }
+
+
+
+  // getAlls(){
+  //   this.post$.subscribe(x => this.editAuthor = x);
+  // }
+
+
+  //  getForm(){
+  //   this.editAuthorForm = new FormGroup({
+  //     lastName: new FormControl(this.editAuthor.lastName, Validators.required),
+  //       name: new FormControl(this.editAuthor.lastName, Validators.required),
+  //       pater: new FormControl(this.editAuthor.lastName, Validators.required),
+  //       dateBorn: new FormControl(this.editAuthor.lastName, Validators.required)
+  //   })
+  // }
+
+
+
+  // editSubmit(editAuthorForm: FormGroup){
+  //   console.log('Author', editAuthorForm.value);
+  // }
+
+  
+
+ 
+
+  
+
+
+
+
 
 
  holdName(author: IAuthor, input: HTMLInputElement){
