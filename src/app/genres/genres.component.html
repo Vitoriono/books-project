@@ -1,0 +1,29 @@
+
+<div class="container">
+	<form novalidate [formGroup]="genreForm" (ngSubmit)="getGenre(genreForm)">
+		
+		<div class="form">
+			<h1 class="h3 mb-3 fw-normal">Додайте свій жанр!</h1>
+			<input required formControlName="genre" type="text" class="form-control form-gap " id="inputLastName"
+				placeholder="Жанр" />
+			<div id="placeholder" *ngIf="genreForm.controls.genre.invalid && genreForm.controls.genre.touched">
+				<p *ngIf="genreForm.controls.genre.errors?.required">*Required field!</p>
+				<p *ngIf="genreForm.controls.genre.errors?.minlength">
+					*Length at least
+					{{ genreForm.controls.genre.errors?.minlength.requiredLength }}
+					characters.
+				</p>
+			</div>
+			<button class="w-100 btn btn-lg" type="submit" [disabled]="genreForm.invalid">
+				Додати
+			</button>
+			<div *ngFor="let gen of genres">
+				<ul>
+					<li>
+						{{gen}}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</form>
+</div>

@@ -13,6 +13,7 @@ import { BackendService } from './services/backend.service';
 import { MainComponent } from './main/main.component';
 import { EditComponent } from './edit/edit.component';
 import { FindBookComponent } from './find-book/find-book.component';
+import { GenresComponent } from './genres/genres.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FindBookComponent } from './find-book/find-book.component';
     BookComponent,
     MainComponent,
     EditComponent,
-    FindBookComponent
+    FindBookComponent,
+    GenresComponent
   ],
   imports: [
     BrowserModule,
