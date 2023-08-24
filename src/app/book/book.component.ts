@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { ApiService } from '../services/api.service';
-import { IBook } from '../interfaces';
+import { IBook, IGenre } from '../interfaces';
 
 @Component({
   selector: 'app-book',
@@ -20,7 +20,9 @@ export class BookComponent {
 
   declare bookForm: FormGroup;
   declare foreignKey: number | unknown;
+  declare genres: Array<IGenre>;
   books: Array<IBook> = [];
+  
 
   categories: Array<string> = ['Technology', 'Health', 'Opinion', 'Culture']
 
@@ -30,6 +32,12 @@ export class BookComponent {
       pages: new FormControl("",  [Validators.required, Validators.minLength(2) ]),
       genre: new FormControl("Technology")
     })
+  }
+
+
+
+  getAllGenres(){
+    this.apiServ.getGenres().subscribe(data => this.genres = data);
   }
 
        
@@ -59,7 +67,7 @@ export class BookComponent {
   ngOnInit(): void {
     this.getForm();
     this.getForeignKey();
-          
-    }
+    this.getAllGenres();
+  }
   }
 

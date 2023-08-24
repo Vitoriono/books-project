@@ -1,7 +1,6 @@
 
 <div class="container">
 	<form novalidate [formGroup]="genreForm" (ngSubmit)="getGenre(genreForm)">
-		
 		<div class="form">
 			<h1 class="h3 mb-3 fw-normal">Додайте свій жанр!</h1>
 			<input required formControlName="genre" type="text" class="form-control form-gap " id="inputLastName"
@@ -17,12 +16,8 @@
 			<button class="w-100 btn btn-lg" type="submit" [disabled]="genreForm.invalid">
 				Додати
 			</button>
-			<div *ngFor="let gen of genres">
-				<ul>
-					<li>
-						{{gen}}
-					</li>
-				</ul>
+			<div class="genre-list" *ngFor="let gen of genres">
+				<span class="genre"><span>&#9672;&nbsp;&nbsp;&nbsp;</span>{{gen.genre}}</span>
 			</div>
 		</div>
 	</form>

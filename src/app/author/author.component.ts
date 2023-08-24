@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
-import { IAuthor, IFitness } from '../interfaces';
+import { IAuthor } from '../interfaces';
 import { Router } from '@angular/router';
 
 @Component({

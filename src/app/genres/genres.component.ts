@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from '../services/api.service';
+import { IGenre } from '../interfaces';
 
 @Component({
   selector: 'app-genres',
@@ -8,10 +10,15 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class GenresComponent {
 
-  genres: Array<string> = ['Фантастика', 'Детектив', 'Поема', 'Роман'];
+  constructor(private apiServ: ApiService){}
+
+  declare genres: Array<IGenre>;
+
+  // genre: Array<string> = ['Фантастика', 'Детектив', 'Поема', 'Роман'];
 
   ngOnInit(): void {
     this.getForm();
+    this.getAllGenres();
   }
 
 
@@ -26,9 +33,19 @@ export class GenresComponent {
 
   getGenre(genreForm: FormGroup){
     let lastGenre = genreForm.value;
-        this.genres.push(lastGenre.genre);
-      console.log(this.genres);
+      if(lastGenre !== ''){
+      this.apiServ.postGenre(lastGenre).subscribe(data => {
+        this.genres.push(data);
+      })
+    }
     this.genreForm.reset();
+  }
+
+
+   
+
+  getAllGenres(){
+    this.apiServ.getGenres().subscribe(data => this.genres = data);
   }
 
 }

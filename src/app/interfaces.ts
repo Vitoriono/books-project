@@ -1,6 +1,6 @@
-export interface IFitness {
+export interface IGenre {
   id: number,
-  name: string
+  genre: string
 }
 
 export interface IAuthor {

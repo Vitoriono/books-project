@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { IAuthor, IBook } from '../interfaces';
+import { IAuthor, IBook, IGenre } from '../interfaces';
 
 
 @Injectable({
@@ -12,6 +12,8 @@ export class ApiService  {
  URL: string = 'api/author';
 
  booksURL: string = 'api/books';
+
+ genreURL: string = 'api/genres';
 
   constructor(private http: HttpClient) { }
 
@@ -65,6 +67,16 @@ export class ApiService  {
 
   deleteBook(id: number): Observable<IBook> {
     return this.http.delete<IBook>(`${this.booksURL}/${id}`);
+  }
+
+
+
+  getGenres(): Observable<Array<IGenre>> {
+    return this.http.get<Array<IGenre>>(this.genreURL);
+  }
+
+  postGenre(genre: IGenre): Observable<IGenre> {
+    return this.http.post<IGenre>(this.genreURL, genre);
   }
  
 }
