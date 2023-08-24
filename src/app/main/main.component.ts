@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { IAuthor } from '../interfaces';
+import { IAuthor, IBook } from '../interfaces';
 
 @Component({
   selector: 'app-main',
@@ -10,9 +10,11 @@ import { IAuthor } from '../interfaces';
 export class MainComponent {
   constructor(private apiServ: ApiService){}
 
-   authorList!: Array<IAuthor>;
+   declare authorList: Array<IAuthor>;
+   declare bookList: Array<IBook>; 
    loading: boolean = true;
-  //  editingFit!: any;
+   foreignKey!: number;
+   
 
   // delets: string = 'видалити';
   // edits: string = 'редагувати';
@@ -28,6 +30,13 @@ export class MainComponent {
       }
     })
   }
+
+
+getAllBooks(){
+   return this.apiServ.getBooks().subscribe(data => this.bookList = data);
+}
+
+
 
   detailAuthor(id: number){
     console.log('Author id',id)
@@ -49,6 +58,7 @@ export class MainComponent {
 
   ngOnInit(): void {
     this.getAllAuthors();
+    this.getAllBooks();
   }
 
 }

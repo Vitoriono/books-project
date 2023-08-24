@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
 	<h2>Reactive Form</h2>
 	<form novalidate [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm)">
 		<div class="input-group mb-3">
@@ -23,4 +23,49 @@
 	<pre>
     {{bookForm.value | json}}
   </pre>
+</div> -->
+
+
+
+<div class="text-center container">
+	<form novalidate [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm)">
+
+		<h1 class="h3 mb-3 fw-normal">Додайте книжку!</h1>
+		<input required formControlName="title" type="text" class="form-control form-gap" id="inputTitle" placeholder="Назва" />
+		<div id="placeholder" *ngIf="bookForm.controls.title.invalid && bookForm.controls.title.touched">
+			<p *ngIf="bookForm.controls.title.errors?.required">*Required field!</p>
+			<p *ngIf="bookForm.controls.title.errors?.minlength">
+				*Length at least
+				{{ bookForm.controls.title.errors?.minlength.requiredLength }}
+				characters.
+			</p>
+		</div>
+
+		<input required formControlName="pages" type="text" class="form-control" id="inputName" placeholder="Кіл. сторінок" />
+		<div id="placeholder" *ngIf=" bookForm.controls.pages.invalid && bookForm.controls.pages.touched">
+			<p *ngIf="bookForm.controls.pages.errors?.required">
+				*Required field!
+			</p>
+			<p *ngIf="bookForm.controls.pages.errors?.minlength">
+				*Length at least
+				{{ bookForm.controls.pages.errors?.minlength.requiredLength }}
+				characters.
+			</p>
+		</div>
+
+		<div class="input-group mb-3 genre">
+			<div class="genre-label">
+				<label for="">Жанри книжок:</label>
+			</div>
+			<div>
+				<select formControlName="genre" class="form-control mb-3 category" type="category" name="options" placeholder="Жанри">
+					<option *ngFor="let category of categories">{{category}}</option>
+				</select>
+			</div>
+		</div>
+		<button class="w-100 btn btn-lg" type="submit" [disabled]="bookForm.invalid">
+			Sign in
+		</button>
+	</form>
 </div>
+

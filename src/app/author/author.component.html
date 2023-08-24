@@ -1,39 +1,57 @@
-<div class="main">
-	<h2>Reactive Form</h2>
+<div class="text-center container">
 	<form novalidate [formGroup]="authorForm" (ngSubmit)="onSubmit(authorForm)">
-		<div class="input-group mb-3">
-			<span class="input-group-text mail" id="basic-addon1">Прізвище</span>
-			<input required type="text" class="form-control" formControlName="lastName" placeholder="Add e-mail">
+		
+		<h1 class="h3 mb-3 fw-normal">Додайте автора!</h1>
+		<input required formControlName="lastName" type="text" class="form-control form-gap " id="inputLastName"
+			placeholder="Прізвище" />
+		<div id="placeholder" *ngIf="authorForm.controls.lastName.invalid && authorForm.controls.lastName.touched">
+			<p *ngIf="authorForm.controls.lastName.errors?.required">*Required field!</p>
+			<p *ngIf="authorForm.controls.lastName.errors?.minlength">
+				*Length at least
+				{{ authorForm.controls.lastName.errors?.minlength.requiredLength }}
+				characters.
+			</p>
 		</div>
-		<div class="input-group mb-3">
-			<span class="input-group-text mail" id="basic-addon1">Ім'я</span>
-			<input required type="text" class="form-control" formControlName="name" placeholder="Add e-mail">
+		<input required formControlName="name" type="text" class="form-control form-gap" id="inputName"
+			placeholder="Ім'я" />
+		<div id="placeholder" *ngIf=" authorForm.controls.name.invalid && authorForm.controls.name.touched">
+			<p *ngIf="authorForm.controls.name.errors?.required">
+				*Required field!
+			</p>
+			<p *ngIf="authorForm.controls.name.errors?.minlength">
+				*Length at least
+				{{ authorForm.controls.name.errors?.minlength.requiredLength }}
+				characters.
+			</p>
 		</div>
-		<div class="input-group mb-3">
-			<span class="input-group-text mail" id="basic-addon1">По батькові</span>
-			<input required type="text" class="form-control" formControlName="father" placeholder="Add e-mail">
+		<input required formControlName="father" type="text" class="form-control form-gap" id="inputFather"
+			placeholder="По батькові" />
+		<div id="placeholder" *ngIf="authorForm.controls.father.invalid && authorForm.controls.father.touched">
+			<p *ngIf="authorForm.controls.father.errors?.required">*Required field!</p>
+			<p *ngIf="authorForm.controls.father.errors?.minlength">
+				*Length at least
+				{{ authorForm.controls.father.errors?.minlength.requiredLength }}
+				characters.
+			</p>
 		</div>
-		<div class="input-group mb-3">
-			<span class="input-group-text" id="basic-addon1">Дата народження</span>
-			<input #resFit required type="text" class="form-control" formControlName="dateBorn" placeholder="Add password">
+		<input required formControlName="dateBorn" type="text" class="form-control form-gap" id="inputDateBorn"
+			placeholder="Прізвище" />
+		<div id="placeholder" *ngIf="authorForm.controls.dateBorn.invalid && authorForm.controls.dateBorn.touched">
+			<p *ngIf="authorForm.controls.dateBorn.errors?.required">*Required field!</p>
+			<p *ngIf="authorForm.controls.dateBorn.errors?.minlength">
+				*Length at least
+				{{ authorForm.controls.dateBorn.errors?.minlength.requiredLength }}
+				characters.
+			</p>
 		</div>
-		<div class="btn">
-			<input type="submit" class="btn btn-outline-secondary" value="Register" [disabled]="authorForm.invalid">
-		</div>
+		<button class="w-100 btn btn-lg" type="submit" [disabled]="authorForm.invalid">
+			Sign in
+		</button>
 	</form>
-	<pre>
-    {{authorForm.value | json}}
-  </pre>
 </div>
 
 
-<div>
-	<ul *ngFor="let fitness of author">
-		<li>{{fitness.lastName}}</li>
-		<li>{{fitness.name}}</li>
-		<li>{{fitness.father}}</li>
-		<li>{{fitness.dateBorn}}</li>
-	</ul>
-</div>
+
+
 
 

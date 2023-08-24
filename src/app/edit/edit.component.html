@@ -32,10 +32,11 @@
 			</div>
 		</div>
 		<div class="btn-author">
-			<div>
-				<button (click)="editsAuthor(lastNameVal.value, nameVal.value, father.value, dateBorn.value)" type="button"
+			
+				<button (click)="toMain()"  type="button" class="btn btn-outline-dark light">На головну</button>
+				<button (click)="editsAuthor(authors.id, lastNameVal.value, nameVal.value, father.value, dateBorn.value)" type="button"
 					class="btn btn-outline-dark light">Редагувати</button>
-			</div>
+			
 		</div>
 	</div>
 		

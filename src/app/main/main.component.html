@@ -5,31 +5,44 @@
 		</div>
 	</div>
 </ng-container>
-<ng-container *ngIf="!loading">
+<ng-container class="container" *ngIf="!loading">
 	
 		<h2>Книжкова полиця</h2>
 	
 	
 	<div class="subtitles">
-		<h3>Автори</h3>
-		<h3>Кількість книжок</h3>
+		<button type="button" class="btn btn-success button" [routerLink]="['author']">Додати автора</button>
+		<h3>Кіл. книжок</h3>
 		<h3>Умови</h3>
 	</div>
 	
-	<div class="list" *ngFor="let author of authorList">
-		<ul>
-			<li>{{author.id}} {{author.lastName}} {{author.name[0]}}. {{author.father[0]}}.</li>
-		</ul>
-		<ul>
-			<li>
-				{{author.id}}	
-			</li>
-		</ul>
-		<div class="buttons">
-			<button type="button" class="btn btn-outline-secondary button" [routerLink]="['author', author.id]">Редагувати</button>
-			<button type="button" class="btn btn-outline-secondary button" (click)="deleteAuthor(author.id)">Видалити</button>
-			<button type="button" class="btn btn-outline-secondary button" (click)="detailAuthor(author.id)">Деталі</button>
+		<div class="list" *ngFor="let author of authorList">
+			<ul>
+				<li>{{author.id}} {{author.lastName}} {{author.name[0]}}. {{author.father[0]}}.</li>
+			</ul>
+			<ul>
+				<li>
+					{{author.id}}
+				</li>
+			</ul>
+			<div class="buttons">
+				<button type="button" class="btn btn-outline-secondary button"
+					[routerLink]="['author', author.id]">Редагувати</button>
+				<button type="button" class="btn btn-outline-secondary button"
+					(click)="deleteAuthor(author.id)">Видалити</button>
+				<button type="button" class="btn btn-outline-info button" (click)="detailAuthor(author.id)">Деталі</button>
+			</div>
 		</div>
-		
-	</div>
+		<!-- <div>
+			<ul *ngFor="let book of bookList">
+				<li>
+					{{book.title}}
+				</li>
+			</ul>
+		</div> -->
+	
+	
+	
 </ng-container>
+
+

@@ -1,40 +1,46 @@
-.main {
-	margin: 70px 0 40px 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
+.container {
+	max-width: 600px;
+	margin-top: 10rem;
+	background-color: rgb(228, 216, 216);
+	// opacity: 0.85;
+	padding: 30px 30px 10px 30px;
+	border-radius: 5%;
+	box-shadow: 10px 7px 7px 0px rgba(0, 0, 0, 0.4);
 }
 
-.mail {
-	width: 95px;
+.form-gap {
+	margin-bottom: 2px;
 }
 
-h2 {
-	font-size: 32px;
-	margin-bottom: 40px;
+input {
+	height: 50px;
+	width: 450px;
 }
 
-.btn {
-	position: sticky;
-	left: 80%;
+button {
+	margin-top: 40px;
+	background-color: rgb(77, 3, 66);
+	color: white;
 }
 
-pre {
-	color: black;
-	font-size: 18px;
+button:hover {
+	color: white;
+	background-color: rgb(59, 5, 51);
 }
 
-
-form {
-	padding: 20px;
-	margin-bottom: 20px;
+button:disabled {
+	background-color: rgb(92, 22, 82);
+	color: rgb(230, 204, 226);
 }
 
-.ng-valid {
-	border: 3px solid rgb(105, 247, 4);
+.logo {
+	border-radius: 15px;
 }
 
-.ng-invalid {
-	border: 3px solid rgb(239, 175, 196);
+#placeholder {
+	color: rgb(211, 15, 15);
+	margin: -2em 0 0 14em;
+	position: absolute;
+	font-style: italic;
+	font-size: 16px;
 }

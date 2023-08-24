@@ -17,9 +17,9 @@ export class AuthorComponent {
 
   getForm(){
     this.authorForm = new FormGroup({
-      lastName: new FormControl(null, Validators.required ),
+      lastName: new FormControl("", [Validators.required, Validators.minLength(2) ]),
       name: new FormControl("", [Validators.required, Validators.minLength(4) ]),
-      father: new FormControl(null, Validators.required ),
+      father: new FormControl("", [Validators.required, Validators.minLength(2)] ),
       dateBorn: new FormControl("", [Validators.required, Validators.minLength(4) ])
     })
   }

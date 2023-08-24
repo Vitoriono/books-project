@@ -17,6 +17,7 @@ export class EditComponent {
   declare booksList: Array<IBook>;
   declare foreignKey:  any;
 
+
   constructor(
     private apiServise: ApiService,
     private router: ActivatedRoute,
@@ -51,22 +52,33 @@ export class EditComponent {
         ).subscribe(id => this.foreignKey = id);
   }
 
+
+
   editsBook(id: number, title: string, genre: string, pages: any){
       this.apiServise.editBook({id, title, genre,  pages, foreignKey: +this.foreignKey}).subscribe(() => {
       })
       alert('Книгу відредаговано!');
-      // this.getAllDatas();
   }
 
 
-  editsAuthor(lastName: string, name: string, father: string, dateBorn: string){
-    this.authors$ = this.router.params.pipe(
-      switchMap((params: Params) => {
+
+  editsAuthor(id: number, lastName: string, name: string, father: string, dateBorn: string){
+          alert('Автора відредаговано!');
+            const editValues = {id, lastName, name, father, dateBorn}
+            this.editAuthor = editValues;
+            return this.editAuthor;
+            }
+    
+  
+
+
+  toMain(){
+     this.authors$ = this.router.params.pipe(
+      switchMap(() => {
         this.route.navigate(['/']);
-        return this.apiServise.editElem({lastName, name, father, dateBorn, id: +params['id']});
+        return this.apiServise.editElem(this.editAuthor);
       })
     )
-    // this.getAllDatas();
   }
 
 

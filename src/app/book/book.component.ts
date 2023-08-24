@@ -26,9 +26,9 @@ export class BookComponent {
 
   getForm(){
     this.bookForm = new FormGroup({
-      title: new FormControl(null, Validators.required),
-      pages: new FormControl("", Validators.required),
-      genre: new FormControl("", Validators.required)
+      title: new FormControl(null,  [Validators.required, Validators.minLength(2) ]),
+      pages: new FormControl("",  [Validators.required, Validators.minLength(2) ]),
+      genre: new FormControl("Technology")
     })
   }
 
@@ -42,6 +42,7 @@ export class BookComponent {
       })
     }
     this.route.navigate(['/']);
+    console.log(lastBook);
   }
 
 

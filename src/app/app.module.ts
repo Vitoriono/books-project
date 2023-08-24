@@ -12,6 +12,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { BackendService } from './services/backend.service';
 import { MainComponent } from './main/main.component';
 import { EditComponent } from './edit/edit.component';
+import { FindBookComponent } from './find-book/find-book.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { EditComponent } from './edit/edit.component';
     AuthorComponent,
     BookComponent,
     MainComponent,
-    EditComponent
+    EditComponent,
+    FindBookComponent
   ],
   imports: [
     BrowserModule,
