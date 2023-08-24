@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { IAuthor, IBook, IFitness } from '../interfaces';
+import { IAuthor, IBook } from '../interfaces';
 
 
 @Injectable({
@@ -9,13 +9,13 @@ import { IAuthor, IBook, IFitness } from '../interfaces';
 })
 export class ApiService  {
 
- URL: string = 'api/fitness';
+ URL: string = 'api/author';
 
  booksURL: string = 'api/books';
 
   constructor(private http: HttpClient) { }
 
-  getElem(): Observable<Array<IAuthor>> {
+  getAuthors(): Observable<Array<IAuthor>> {
     return this.http.get<Array<IAuthor>>(this.URL);
   }
 
@@ -27,7 +27,7 @@ export class ApiService  {
 
 
 
-   getPostById(id: number): Observable<IAuthor> {
+   getAuthById(id: number): Observable<IAuthor> {
     return this.http
       .get<IAuthor>(`${this.URL}/${id}`)
       .pipe(map((res: any) => res));

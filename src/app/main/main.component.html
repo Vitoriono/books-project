@@ -16,7 +16,7 @@
 		<h3>Умови</h3>
 	</div>
 	
-	<div class="list" *ngFor="let author of fitList">
+	<div class="list" *ngFor="let author of authorList">
 		<ul>
 			<li>{{author.id}} {{author.lastName}} {{author.name[0]}}. {{author.father[0]}}.</li>
 		</ul>
@@ -28,7 +28,7 @@
 		<div class="buttons">
 			<button type="button" class="btn btn-outline-secondary button" [routerLink]="['author', author.id]">Редагувати</button>
 			<button type="button" class="btn btn-outline-secondary button" (click)="deleteAuthor(author.id)">Видалити</button>
-			<button type="button" class="btn btn-outline-secondary button" (click)="getIdAuthor(author.id)">Деталі</button>
+			<button type="button" class="btn btn-outline-secondary button" (click)="detailAuthor(author.id)">Деталі</button>
 		</div>
 		
 	</div>

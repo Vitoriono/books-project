@@ -11,13 +11,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent {
-  declare post$: Observable<IAuthor>;
-  declare login: string;
+  declare authors$: Observable<IAuthor>;
+  // declare login: string;
   declare editAuthor: IAuthor;
   declare editBook: IBook;
   declare booksList: Array<IBook>;
-
-  declare name: any;
+  declare userId: number | unknown;
 
   constructor(
     private apiServise: ApiService,
@@ -27,108 +26,42 @@ export class EditComponent {
 
   ngOnInit() {
     this.getAllDatas();
+    // this.getUserId();
   }
 
   editAuthorForm!: FormGroup
   something: string = 'Hello';
 
   getAllDatas(){
-     this.post$ = this.router.params.pipe(
+     this.authors$ = this.router.params.pipe(
       switchMap((params: Params) => {
       this.apiServise.getBooks()
         .subscribe( data=> this.booksList = data
           .filter(value => value.foreignKey == params['id']));
 
-        return this.apiServise.getPostById(params['id']);
+        return this.apiServise.getAuthById(params['id']);
       })
     );
   }
 
 
-  editBorn(lastName: string, name: string, father: string, dateBorn: string){
-    
-    const editAuthor = {
-      lastName,
-      name,
-      father,
-      dateBorn
-    }
-
-    this.post$ = this.router.params.pipe(
-      switchMap((params: Params) => {
-        this.route.navigate(['/']);
-        return this.apiServise.editElem({...editAuthor, id: +params['id']});
-        
-      })
-    )
-    
+  editsBook(title: string, genre: string, pages: string){
+      console.log('Books', {title, genre, pages})
   }
 
- 
-
-  
 
 
+  editsAuthor(lastName: string, name: string, father: string, dateBorn: string){
+    this.authors$ = this.router.params.pipe(
+      switchMap((params: Params) => {
+        this.route.navigate(['/']);
+        return this.apiServise.editElem({lastName, name, father, dateBorn, id: +params['id']});
+      })
+    )
+  }
 
 
-
-
-//  holdName(author: IAuthor, input: HTMLInputElement){
-//     this.editAuthor = author;
-//     input.value = author.name;
-//   }
-
-// editName(newName: string){
-//     this.editAuthor.name = newName;
-//     this.apiServise.editElem(this.editAuthor).subscribe(() => {
-//     })
-//   }
-
-
-// holdLastName(author: IAuthor, input: HTMLInputElement){
-//   this.editAuthor = author;
-//   input.value = author.lastName;
-// }
-
-
-// editLastName(newName: string){
-//   this.editAuthor.lastName = newName;
-//   this.apiServise.editElem(this.editAuthor).subscribe(() => {
-//   })
-
-//   console.log('Hold Value', newName);
-// }
-
-
-  // holdPater(author: IAuthor, input: HTMLInputElement){
-  //   this.editAuthor = author;
-  //   input.value = author.father;
-  // }
-
-
-  // editPater(newName: string){
-  //   this.editAuthor.father = newName;
-  //   this.apiServise.editElem(this.editAuthor).subscribe(() => {
-  //   })
-  // }
-
-
-
-  // holdBorn(author: IAuthor, input: HTMLInputElement){
-  //   this.editAuthor = author;
-  //   input.value = author.dateBorn;
-  // }
-
-
- 
-
-  // holdBook(book: IBook, input: HTMLInputElement){
-  //   this.editBook
-  // }
-
-
-
-  deleteBook(id: number) {
+deleteBook(id: number) {
     this.apiServise.deleteBook(id).subscribe(data => {
       if (!data && data === false) {
         alert('Book not deleted!');

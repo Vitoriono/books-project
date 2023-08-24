@@ -10,30 +10,30 @@
 
 	<h2>Редагування</h2>
 	
-<div *ngIf="post$ | async as post" class="list" >
+<div *ngIf="authors$ | async as authors" class="list" >
 
 	<div class="edit-author">
 		<div class="block-author">
 			<div class="each">
 				<span><i>Прізвище</i></span>
-				<input #lastNameVal type="text" class="form-control" placeholder="Add exercise" value="{{post.lastName}}">
+				<input #lastNameVal type="text" class="form-control" placeholder="Add exercise" value="{{authors.lastName}}">
 			</div>
 			<div class="each">
 				<span><i>Ім'я</i></span>
-				<input #nameVal type="text" class="form-control" placeholder="Add exercise" value="{{post.name}}">
+				<input #nameVal type="text" class="form-control" placeholder="Add exercise" value="{{authors.name}}">
 			</div>
 			<div class="each">
 				<span><i>По батькові</i></span>
-				<input #father type="text" class="form-control" placeholder="Add exercise" value="{{post.father}}">
+				<input #father type="text" class="form-control" placeholder="Add exercise" value="{{authors.father}}">
 			</div>
 			<div class="each">
 				<span><i>Дата народж.</i></span>
-				<input #dateBorn type="text" class="form-control" placeholder="Add exercise" value="{{post.dateBorn}}">
+				<input #dateBorn type="text" class="form-control" placeholder="Add exercise" value="{{authors.dateBorn}}">
 			</div>
 		</div>
 		<div class="btn-author">
 			<div>
-				<button (click)="editBorn(lastNameVal.value, nameVal.value, father.value, dateBorn.value)" type="button"
+				<button (click)="editsAuthor(lastNameVal.value, nameVal.value, father.value, dateBorn.value)" type="button"
 					class="btn btn-outline-dark light">Редагувати</button>
 			</div>
 		</div>
@@ -49,15 +49,13 @@
 
 		<div *ngFor="let book of booksList" class="blockbook">
 			<div class="allbooks">
-				<span>{{book.title}}</span>
-				<span>{{book.genre}}</span>
-				<span>{{book.pages}}c.</span>
+				<input #title type="text" class="form-control" placeholder="Add exercise" value="{{book.title}}">
+				<input #genre type="text" class="form-control" placeholder="Add exercise" value="{{book.genre}}">
+				<input #pages type="text" class="form-control" placeholder="Add exercise" value="{{book.pages}}c.">
 			</div>
-			
 			<div class="btnblock">
-				<!-- <span (click)="holdBook(book, resFit)" class="edit">&#9998;</span> -->
 				<div class="bookbtn">
-					<!-- <button type="button" (click)="editBook(resFit.value)" class="btn btn-outline-dark light btn-book">Змінити</button> -->
+					<button type="button" (click)="editsBook(title.value, genre.value, pages.value)" class="btn btn-outline-dark light btn-book">Змінити</button>
 					<button type="button" (click)="deleteBook(book.id)" class="btn btn-outline-dark light btn-book">Видалити</button>
 				</div>	
 			</div>

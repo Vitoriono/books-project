@@ -30,7 +30,7 @@ export class AuthorComponent {
   }
 
   getAuthor(){
-    this.apiServ.getElem().subscribe({
+    this.apiServ.getAuthors().subscribe({
       next: (data) => this.author = data,
       error: () => { console.error('Have you turned on the MemoryWebApi?!') },
       complete: () => {

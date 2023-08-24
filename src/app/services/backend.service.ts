@@ -9,7 +9,7 @@ export class BackendService implements InMemoryDbService {
   constructor() { }
 
   createDb(): Object {
-    let fitness  = [
+    let author  = [
       {id: 1, lastName: "Шевченко", name: "Jane", father: "Mario", dateBorn: "12.08.1815" },
       {id: 2, lastName: "Хайлайн", name: "Jdane", father: "Mafevrio", dateBorn: "12.18.1815" },
       {id: 3, lastName: "Dolly", name: "Jane", father: "Mario", dateBorn: "12.08.1815"},
@@ -23,6 +23,6 @@ export class BackendService implements InMemoryDbService {
       {id: 5, title: "Якщо", pages: 250, genre: "Поема", foreignKey: 3 },
       {id: 6, title: "Парфумер", pages: 250, genre: "Поема", foreignKey: 4 },
      ]; 
-    return { fitness, books }
+    return { author, books }
   }
 }

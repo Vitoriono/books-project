@@ -10,47 +10,31 @@ import { IAuthor } from '../interfaces';
 export class MainComponent {
   constructor(private apiServ: ApiService){}
 
-   fitList!: Array<IAuthor>;
-   editingFit!: any;
+   authorList!: Array<IAuthor>;
+   loading: boolean = true;
+  //  editingFit!: any;
 
-  delets: string = 'видалити';
-  edits: string = 'редагувати';
-  loading: boolean = true;
+  // delets: string = 'видалити';
+  // edits: string = 'редагувати';
+  
 
-  getFitList(){
-    this.apiServ.getElem().subscribe({
-      next: (data) => this.fitList = data,
+  getAllAuthors(){
+    this.apiServ.getAuthors().subscribe({
+      next: (data) => this.authorList = data,
       error: () => { console.error('Have you turned on the MemoryWebApi?!') },
       complete: () => {
         this.loading = false;
-        console.log(this.fitList);
+        console.log(this.authorList);
       }
     })
   }
 
-  getIdAuthor(id: number){
+  detailAuthor(id: number){
     console.log('Author id',id)
   }
 
-  postFit(newFitExer: string){
-    console.log('Not Value', newFitExer)
-    // if(newFitExer !== ''){
-    //   this.apiServ.postElem(newFitExer).subscribe(data => {
-    //     this.fitList.unshift(data);
-    //   })
-    // }
-  }
 
-  beginEditFit(fit: any , input: HTMLInputElement){
-    // this.editingFit = fit
-    // input.value = fit.name;
-  }
 
-  completEditFit(newFit: string){
-    // this.editingFit.name = newFit;
-    // this.apiServ.editElem(this.editingFit).subscribe(() => {
-    // })
-  }
 
   deleteAuthor(id: number){
     this.apiServ.deleteElem(id).subscribe((data) => {
@@ -59,12 +43,12 @@ export class MainComponent {
       } else {
         alert('Author deleted!');
       }
-      this.getFitList();
+      this.getAllAuthors();
     })
   }
 
   ngOnInit(): void {
-    this.getFitList();
+    this.getAllAuthors();
   }
 
 }
