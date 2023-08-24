@@ -39,9 +39,9 @@ export class MainComponent {
   deleteAuthor(id: number){
     this.apiServ.deleteElem(id).subscribe((data) => {
       if(!data && data === false){
-        alert('Author not deleted!');
+        alert('Автора не видалено!');
       } else {
-        alert('Author deleted!');
+        alert('Автора видалено!');
       }
       this.getAllAuthors();
     })

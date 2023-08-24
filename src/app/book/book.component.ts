@@ -36,20 +36,13 @@ export class BookComponent {
 
   onSubmit(bookForm: FormGroup){
     const lastBook = bookForm.value;
-
-   
-
-
-        if(lastBook !== ''){
+      if(lastBook !== ''){
       this.apiServ.postBook({...lastBook, foreignKey: this.foreignKey}).subscribe(data => {
         this.books.push(data);
       })
     }
     this.route.navigate(['/']);
-
-    // console.log('I am here', {...lastBook, foreignKey: this.foreignKey});
-
-}
+  }
 
 
   getForeignKey(){

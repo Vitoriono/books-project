@@ -12,11 +12,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class EditComponent {
   declare authors$: Observable<IAuthor>;
-  // declare login: string;
   declare editAuthor: IAuthor;
   declare editBook: IBook;
   declare booksList: Array<IBook>;
-  declare userId: number | unknown;
+  declare foreignKey:  any;
 
   constructor(
     private apiServise: ApiService,
@@ -26,7 +25,7 @@ export class EditComponent {
 
   ngOnInit() {
     this.getAllDatas();
-    // this.getUserId();
+    this.getForeignKey();
   }
 
   editAuthorForm!: FormGroup
@@ -44,11 +43,20 @@ export class EditComponent {
     );
   }
 
-
-  editsBook(title: string, genre: string, pages: string){
-      console.log('Books', {title, genre, pages})
+  getForeignKey(){
+    this.router.params.pipe(
+          switchMap((params: Params) => {
+          return params['id']
+          })
+        ).subscribe(id => this.foreignKey = id);
   }
 
+  editsBook(id: number, title: string, genre: string, pages: any){
+      this.apiServise.editBook({id, title, genre,  pages, foreignKey: +this.foreignKey}).subscribe(() => {
+      })
+      alert('Книгу відредаговано!');
+      // this.getAllDatas();
+  }
 
 
   editsAuthor(lastName: string, name: string, father: string, dateBorn: string){
@@ -58,17 +66,18 @@ export class EditComponent {
         return this.apiServise.editElem({lastName, name, father, dateBorn, id: +params['id']});
       })
     )
+    // this.getAllDatas();
   }
+
 
 
 deleteBook(id: number) {
     this.apiServise.deleteBook(id).subscribe(data => {
       if (!data && data === false) {
-        alert('Book not deleted!');
+        alert('Книгу не видалено!');
       } else {
-        alert('Book deleted!');
-        // this.route.navigate(['/']);
-        this.getAllDatas()
+        alert('Книгу видалено!');
+        this.getAllDatas();
       }
     });
   }

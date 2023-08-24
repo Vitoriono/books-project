@@ -26,8 +26,7 @@ export class ApiService  {
 
 
 
-
-   getAuthById(id: number): Observable<IAuthor> {
+  getAuthById(id: number): Observable<IAuthor> {
     return this.http
       .get<IAuthor>(`${this.URL}/${id}`)
       .pipe(map((res: any) => res));
@@ -40,11 +39,18 @@ export class ApiService  {
 
 
 
+  editBook(book: IBook): Observable<IBook>{
+    return this.http.put<IBook>(`${this.booksURL}/${book.id}`, book);
+  }
+
+
+
 
 
   postElem(exercise: IAuthor): Observable<IAuthor> {
     return this.http.post<IAuthor>(this.URL, exercise);
   }
+  
   postBook(book: IBook): Observable<IBook> {
     return this.http.post<IBook>(this.booksURL, book);
   }
