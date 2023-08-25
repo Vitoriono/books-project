@@ -11,6 +11,19 @@
   flex-direction: column;
 }
 
+
+@media (max-width: 480px) {
+.container {
+    max-width: 450px;
+  }
+
+// .block-author{
+//   max-width: 100px;
+// }  
+}
+
+
+
 input {
   width: 350px;
 }

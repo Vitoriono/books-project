@@ -15,8 +15,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getAuthors(): Observable<Array<IAuthor>> {
-    return this.http.get<Array<IAuthor>>(this.URL);
+  getAuthors(): Observable<Array<IAuthor | any>> {
+    return this.http.get<Array<IAuthor | any>>(this.URL);
   }
 
   getBooks(): Observable<Array<IBook | any>> {
@@ -29,7 +29,7 @@ export class ApiService {
       .pipe(map((res: any) => res));
   }
 
-  editElem(author: IAuthor): Observable<IAuthor> {
+  editAuthor(author: IAuthor): Observable<IAuthor> {
     console.log(author.id);
     return this.http.put<IAuthor>(`${this.URL}/${author.id}`, author);
   }
@@ -38,7 +38,7 @@ export class ApiService {
     return this.http.put<IBook>(`${this.booksURL}/${book.id}`, book);
   }
 
-  postElem(exercise: IAuthor): Observable<IAuthor> {
+  postAuthor(exercise: IAuthor): Observable<IAuthor> {
     return this.http.post<IAuthor>(this.URL, exercise);
   }
 
@@ -46,7 +46,7 @@ export class ApiService {
     return this.http.post<IBook>(this.booksURL, book);
   }
 
-  deleteElem(id: number): Observable<IAuthor> {
+  deleteAuthor(id: number): Observable<IAuthor> {
     return this.http.delete<IAuthor>(`${this.URL}/${id}`);
   }
 
@@ -61,12 +61,4 @@ export class ApiService {
   postGenre(genre: IGenre): Observable<IGenre> {
     return this.http.post<IGenre>(this.genreURL, genre);
   }
-
-  // getQuantity(){
-  //   this.http.get<Array<IBook>>(this.booksURL).pipe(
-  //     map(data => data{
-
-  //     })
-  //   )
-  // }
 }

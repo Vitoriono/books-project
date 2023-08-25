@@ -7,10 +7,10 @@
 </div>
 
 <div class="container" *ngIf="!loading">
-	<form novalidate  >
+	<form novalidate >
 		<div class="form">
 			<h1 class="h3 mb-3 fw-normal">Відшукайте книгу!</h1>
-			<input [formControl]="findForm"  type="text" class="form-control " id="inputLastName" placeholder="Введіть книжку" />
+			<input  [formControl]="findForm"  type="text" class="form-control " id="inputLastName" placeholder="Введіть книжку" />
 			<div class="invalid-bks">
 				<span>{{invalid}}</span>
 			</div>

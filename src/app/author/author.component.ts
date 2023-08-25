@@ -51,7 +51,7 @@ export class AuthorComponent implements OnInit {
   onSubmit(registrForm: FormGroup) {
     const author = registrForm.value;
     if (author !== '') {
-      this.apiServ.postElem(author).subscribe((data: any) => {
+      this.apiServ.postAuthor(author).subscribe((data: any) => {
         this.author.push(data);
       });
     }

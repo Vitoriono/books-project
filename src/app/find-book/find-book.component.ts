@@ -29,7 +29,7 @@ export class FindBookComponent implements OnInit {
         map((value) => {
           return value;
         }),
-        debounceTime(800),
+        debounceTime(700),
         distinctUntilChanged()
       )
       .subscribe((value) => {
@@ -51,7 +51,7 @@ export class FindBookComponent implements OnInit {
   getAllBooks() {
     this.apiServ.getBooks().subscribe({
       next: (data) => {
-        this.books = data;
+        this.books = data.sort((a, b) => (a.title > b.title ? 1 : -1));
       },
       error: () => {
         console.error('Have you turned on the MemoryWebApi?!');

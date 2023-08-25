@@ -82,7 +82,7 @@ export class EditComponent implements OnInit {
     this.authors$ = this.router.params.pipe(
       switchMap(() => {
         this.route.navigate(['/']);
-        return this.apiServise.editElem(this.editAuthor);
+        return this.apiServise.editAuthor(this.editAuthor);
       })
     );
   }

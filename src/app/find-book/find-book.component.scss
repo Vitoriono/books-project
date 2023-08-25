@@ -8,39 +8,30 @@
   box-shadow: 10px 7px 7px 0px rgba(0, 0, 0, 0.4);
 }
 
-.invalid-bks {
-  margin-top: 15px;
-  color: red;
-}
-
 input {
   height: 50px;
   width: 450px;
 }
 
-button {
-  margin-top: 40px;
-  background-color: rgb(77, 3, 66);
-  color: white;
+@media (max-width: 480px) {
+  .container {
+    max-width: 470px;
+  }
+
+    input {
+      height: 50px;
+      width: 370px;
+    }
 }
 
-button:hover {
-  color: white;
-  background-color: rgb(59, 5, 51);
+
+
+.invalid-bks {
+  margin-top: 15px;
+  color: red;
 }
 
-button:disabled {
-  background-color: rgb(92, 22, 82);
-  color: rgb(230, 204, 226);
-}
 
-#placeholder {
-  color: rgb(211, 15, 15);
-  margin: -2em 0 0 14em;
-  position: absolute;
-  font-style: italic;
-  font-size: 16px;
-}
 
 .genre-list {
   margin: 25px 0 5px 45px;

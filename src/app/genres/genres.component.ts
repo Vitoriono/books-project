@@ -43,7 +43,7 @@ export class GenresComponent implements OnInit {
   getAllGenres() {
     this.apiServ.getGenres().subscribe({
       next: (data) => {
-        this.genres = data;
+        this.genres = data.sort((a, b) => (a.genre > b.genre ? 1 : -1));
       },
       error: () => {
         console.error('Have you turned on the MemoryWebApi?!');

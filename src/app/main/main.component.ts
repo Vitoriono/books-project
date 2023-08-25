@@ -10,11 +10,15 @@ import { IAuthor, IBook } from '../interfaces';
 export class MainComponent implements OnInit {
   declare authorList: Array<IAuthor>;
   declare bookList: Array<IBook>;
-  declare quantity: Object | any;
+  declare quantity: Map<number, number> | any;
   loading: boolean = true;
   foreignKey!: number;
 
   constructor(private apiServ: ApiService) {}
+
+  ngOnInit(): void {
+    this.getAllAuthors();
+  }
 
   getAllAuthors() {
     this.apiServ.getBooks().subscribe({
@@ -22,15 +26,10 @@ export class MainComponent implements OnInit {
         this.quantity = quant
           .map((x) => x.foreignKey)
           .reduce((acc, curr) => {
-            acc[curr] = (acc[curr] || 0) + 1;
+            acc[curr] = (acc[curr] | 0) + 1;
             return acc;
           }, {});
-        this.apiServ.getAuthors().subscribe((values) => {
-          this.authorList = values.map((author) => ({
-            ...author,
-            quantity: this.quantity[author.id],
-          }));
-        });
+        this.getQuantity();
       },
       error: () => {
         console.error('Have you turned on the MemoryWebApi?!');
@@ -41,16 +40,19 @@ export class MainComponent implements OnInit {
     });
   }
 
-  getAllBooks() {
-    return this.apiServ.getBooks().subscribe((data) => (this.bookList = data));
-  }
-
-  detailAuthor(id: number) {
-    console.log('Author id', id);
+  getQuantity() {
+    return this.apiServ.getAuthors().subscribe((values) => {
+      this.authorList = values
+        .map((author) => ({
+          ...author,
+          quantity: this.quantity[author.id] | 0,
+        }))
+        .sort((a, b) => (a.lastName > b.lastName ? 1 : -1));
+    });
   }
 
   deleteAuthor(id: number) {
-    this.apiServ.deleteElem(id).subscribe((data) => {
+    this.apiServ.deleteAuthor(id).subscribe((data) => {
       if (!data && data === false) {
         alert('Автора не видалено!');
       } else {
@@ -60,8 +62,5 @@ export class MainComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.getAllAuthors();
-    this.getAllBooks();
-  }
+
 }
