@@ -13,8 +13,7 @@ export class GenresComponent {
   constructor(private apiServ: ApiService){}
 
   declare genres: Array<IGenre>;
-
-  // genre: Array<string> = ['Фантастика', 'Детектив', 'Поема', 'Роман'];
+  loading: boolean = true;
 
   ngOnInit(): void {
     this.getForm();
@@ -42,10 +41,14 @@ export class GenresComponent {
   }
 
 
-   
-
   getAllGenres(){
-    this.apiServ.getGenres().subscribe(data => this.genres = data);
+    this.apiServ.getGenres().subscribe({
+      next: (data) => {this.genres = data},
+      error: () => { console.error('Have you turned on the MemoryWebApi?!') },
+      complete: () => {this.loading = false;}
+    })
   }
+
+
 
 }

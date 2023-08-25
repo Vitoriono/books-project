@@ -10,9 +10,10 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs';
   styleUrls: ['./find-book.component.scss']
 })
 export class FindBookComponent {
-  declare books: Array<IBook>
+  declare books: Array<any>
   declare findForm: FormControl;
   declare invalid: string;
+  loading: boolean = true;
 
   constructor(private apiServ: ApiService){}
 
@@ -39,7 +40,12 @@ export class FindBookComponent {
 }
 
 getAllBooks(){
-  this.apiServ.getBooks().subscribe(data => this.books = data);
+  
+  this.apiServ.getBooks().subscribe({
+    next: (data) => {this.books = data},
+    error: () => { console.error('Have you turned on the MemoryWebApi?!') },
+    complete: () => {this.loading = false;}
+  })
 }
 
   ngOnInit(){

@@ -8,28 +8,36 @@ import { IAuthor, IBook } from '../interfaces';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  constructor(private apiServ: ApiService){}
+  constructor(
+    private apiServ: ApiService,
+    ){}
 
    declare authorList: Array<IAuthor>;
    declare bookList: Array<IBook>; 
+   declare quantity: Object | any;
    loading: boolean = true;
    foreignKey!: number;
-   
-
-  // delets: string = 'видалити';
-  // edits: string = 'редагувати';
   
 
-  getAllAuthors(){
-    this.apiServ.getAuthors().subscribe({
-      next: (data) => this.authorList = data,
-      error: () => { console.error('Have you turned on the MemoryWebApi?!') },
-      complete: () => {
+   
+getAllAuthors(){
+  this.apiServ.getBooks().subscribe({
+    next: (quant) => {
+    this.quantity = quant
+      .map(x => x.foreignKey )
+      .reduce((acc, curr) => {
+        acc[curr] = (acc[curr] || 0) + 1;
+        return acc;
+      }, {})
+     this.apiServ.getAuthors().subscribe(values => {
+     this.authorList = values.map((author) => ({...author, quantity: this.quantity[author.id]}));
+    })},
+    error: () => { console.error('Have you turned on the MemoryWebApi?!') },
+    complete: () => {
         this.loading = false;
-        console.log(this.authorList);
       }
-    })
-  }
+    });
+}
 
 
 getAllBooks(){

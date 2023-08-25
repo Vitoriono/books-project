@@ -1,5 +1,11 @@
-
-<div class="container">
+<div *ngIf="loading">
+	<div class="patch">
+		<div class="spinner-border text-primary spinner" role="status">
+			<span class="sr-only"></span>
+		</div>
+	</div>
+</div>
+<div class="container" *ngIf="!loading">
 	<form novalidate [formGroup]="genreForm" (ngSubmit)="getGenre(genreForm)">
 		<div class="form">
 			<h1 class="h3 mb-3 fw-normal">Додайте свій жанр!</h1>

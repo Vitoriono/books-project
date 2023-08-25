@@ -21,8 +21,8 @@ export class ApiService  {
     return this.http.get<Array<IAuthor>>(this.URL);
   }
 
-  getBooks(): Observable<Array<IBook>> {
-    return this.http.get<Array<IBook>>(this.booksURL);
+  getBooks(): Observable<Array<any>> {
+    return this.http.get<Array<any>>(this.booksURL);
   }
 
 
@@ -78,5 +78,15 @@ export class ApiService  {
   postGenre(genre: IGenre): Observable<IGenre> {
     return this.http.post<IGenre>(this.genreURL, genre);
   }
+
+
+  // getQuantity(){
+  //   this.http.get<Array<IBook>>(this.booksURL).pipe(
+  //     map(data => data{
+        
+  
+  //     })
+  //   )
+  // }
  
 }

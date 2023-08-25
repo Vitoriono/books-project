@@ -8,7 +8,8 @@ export interface IAuthor {
 	lastName: string, 
 	name: string, 
 	father: string, 
-	dateBorn: string
+	dateBorn: string,
+	quantity?: number
 }
 
 export interface IBook {
