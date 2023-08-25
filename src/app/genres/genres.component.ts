@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { IGenre } from '../interfaces';
@@ -6,11 +6,10 @@ import { IGenre } from '../interfaces';
 @Component({
   selector: 'app-genres',
   templateUrl: './genres.component.html',
-  styleUrls: ['./genres.component.scss']
+  styleUrls: ['./genres.component.scss'],
 })
-export class GenresComponent {
-
-  constructor(private apiServ: ApiService){}
+export class GenresComponent implements OnInit {
+  constructor(private apiServ: ApiService) {}
 
   declare genres: Array<IGenre>;
   loading: boolean = true;
@@ -20,35 +19,38 @@ export class GenresComponent {
     this.getAllGenres();
   }
 
+  declare genreForm: FormGroup;
 
-    declare genreForm: FormGroup;
-  
-
-  getForm(){
+  getForm() {
     this.genreForm = new FormGroup({
-      genre: new FormControl("", [Validators.required, Validators.minLength(4)]),
-    })
+      genre: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+    });
   }
 
-  getGenre(genreForm: FormGroup){
+  getGenre(genreForm: FormGroup) {
     let lastGenre = genreForm.value;
-      if(lastGenre !== ''){
-      this.apiServ.postGenre(lastGenre).subscribe(data => {
+    if (lastGenre !== '') {
+      this.apiServ.postGenre(lastGenre).subscribe((data) => {
         this.genres.push(data);
-      })
+      });
     }
     this.genreForm.reset();
   }
 
-
-  getAllGenres(){
+  getAllGenres() {
     this.apiServ.getGenres().subscribe({
-      next: (data) => {this.genres = data},
-      error: () => { console.error('Have you turned on the MemoryWebApi?!') },
-      complete: () => {this.loading = false;}
-    })
+      next: (data) => {
+        this.genres = data;
+      },
+      error: () => {
+        console.error('Have you turned on the MemoryWebApi?!');
+      },
+      complete: () => {
+        this.loading = false;
+      },
+    });
   }
-
-
-
 }

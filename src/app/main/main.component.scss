@@ -1,68 +1,68 @@
-// .container{
-// 	display: flex;
-	// align-items: center;
-	// justify-content: center
-	// width: 1500px;
-// }
-
-.button{
-	margin: 2px;
-	height: 30px;
-	padding: 2px 5px 0px 5px;
+.container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7rem;
+  opacity: 0.85;
+  background-color: rgb(228, 216, 216);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 10px 7px 7px 0px rgba(0, 0, 0, 0.4);
 }
 
-.buttons{
-	margin-left: 200px;
+h1 {
+  font-weight: 500;
 }
 
-h2 {
-	margin: 40px 0 40px 170px;
-	font-size: 40px;
+button {
+  margin: 2px;
+  height: 30px;
+  padding: 2px 5px 0px 5px;
 }
 
-.subtitles{
-	display: flex;
-	justify-content: space-between;
-	width: 1000px;
+.ath-button {
+  margin-bottom: 10px;
 }
 
-.list{
-	display: flex;
-	justify-content: space-between;
-	width: 1000px;
+.sub-titles {
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 
-li {
-  	list-style-type: none;
- }
-
-  ul {
-  	margin-left: 0;
-  	padding-left: 0;
-  }
-
-.main {
-	display: flex;
-	flex-direction: column;
+.info {
+  font-size: 20px;
+  font-weight: 500;
 }
 
+.sub-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
 
+.list {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
 
 .patch {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(136, 136, 204, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(136, 136, 204, 0.5);
 }
 
 .spinner {
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 47%;
-	width: 40px;
-	height: 40px;
-	margin-right: -50%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  width: 40px;
+  height: 40px;
+  margin-right: -50%;
 }

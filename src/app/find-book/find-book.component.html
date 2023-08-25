@@ -11,9 +11,10 @@
 		<div class="form">
 			<h1 class="h3 mb-3 fw-normal">Відшукайте книгу!</h1>
 			<input [formControl]="findForm"  type="text" class="form-control " id="inputLastName" placeholder="Введіть книжку" />
-			<span>{{invalid}}</span>
-			
-			<div class="genre-list" *ngFor="let book of books">
+			<div class="invalid-bks">
+				<span>{{invalid}}</span>
+			</div>
+				<div class="genre-list" *ngFor="let book of books">
 				<span class="genre"><span>&#9672;&nbsp;&nbsp;&nbsp;</span>{{book.title}}</span>
 			</div>
 		</div>

@@ -1,73 +1,67 @@
-
 .container {
-	max-width: 600px;
-	margin-top: 3rem;
-	background-color: rgb(228, 216, 216);
-	padding: 30px 30px 10px 30px;
-	border-radius: 4%;
-	box-shadow: 10px 7px 7px 0px rgba(0, 0, 0, 0.4);
+  max-width: 600px;
+  margin-top: 7rem;
+  background-color: rgb(228, 216, 216);
+  opacity: 0.85;
+  padding: 30px 30px 10px 30px;
+  border-radius: 4%;
+  box-shadow: 10px 7px 7px 0px rgba(0, 0, 0, 0.4);
 }
 
-
-
 input {
-	height: 50px;
-	width: 450px;
+  height: 50px;
+  width: 450px;
 }
 
 button {
-	margin-top: 40px;
-	background-color: rgb(77, 3, 66);
-	color: white;
+  margin-top: 40px;
+  background-color: rgb(77, 3, 66);
+  color: white;
 }
 
 button:hover {
-	color: white;
-	background-color: rgb(59, 5, 51);
+  color: white;
+  background-color: rgb(59, 5, 51);
 }
 
 button:disabled {
-	background-color: rgb(92, 22, 82);
-	color: rgb(230, 204, 226);
+  background-color: rgb(92, 22, 82);
+  color: rgb(230, 204, 226);
 }
-
 
 #placeholder {
-	color: rgb(211, 15, 15);
-	margin: -2em 0 0 14em;
-	position: absolute;
-	font-style: italic;
-	font-size: 16px;
+  color: rgb(211, 15, 15);
+  margin: -2em 0 0 14em;
+  position: absolute;
+  font-style: italic;
+  font-size: 16px;
 }
 
-.genre-list{
-	margin: 25px 0 5px 45px;
+.genre-list {
+  margin: 25px 0 5px 45px;
 }
 
-.genre{
-	font-size: 20px;
-	font-weight: 500;
-	font-style: italic;
+.genre {
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
 }
 
 .patch {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(136, 136, 204, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(136, 136, 204, 0.5);
 }
 
 .spinner {
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 47%;
-	width: 40px;
-	height: 40px;
-	margin-right: -50%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 47%;
+  width: 40px;
+  height: 40px;
+  margin-right: -50%;
 }
-
-
-

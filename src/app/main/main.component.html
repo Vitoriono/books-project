@@ -1,48 +1,56 @@
-<ng-container *ngIf="loading">
+<div *ngIf="loading">
 	<div class="patch">
 		<div class="spinner-border text-primary spinner" role="status">
 			<span class="sr-only"></span>
 		</div>
 	</div>
-</ng-container>
-<ng-container class="container" *ngIf="!loading">
-	
-		<h2>Книжкова полиця</h2>
-	
-	
-	<div class="subtitles">
-		<button type="button" class="btn btn-success button" [routerLink]="['author']">Додати автора</button>
-		<h3>Кіл. книжок</h3>
-		<h3>Умови</h3>
+</div>
+
+
+<div class="container" *ngIf="!loading">
+	<div>
+		<h1 class="h3 mb-3 fw-normal">Книжкова полиця</h1>
 	</div>
+		
 	
-		<div class="list" *ngFor="let author of authorList">
-			<ul>
-				<li>{{author.id}} {{author.lastName}} {{author.name[0]}}. {{author.father[0]}}.</li>
-			</ul>
-			<ul>
-				<li>
-					{{author.quantity}}
-				</li>
-			</ul>
-			<div class="buttons">
-				<button type="button" class="btn btn-outline-secondary button"
-					[routerLink]="['author', author.id]">Редагувати</button>
-				<button type="button" class="btn btn-outline-secondary button"
-					(click)="deleteAuthor(author.id)">Видалити</button>
-				<button type="button" class="btn btn-outline-info button" (click)="detailAuthor(author.id)">Деталі</button>
+	<div class="sub-container">
+
+
+		<div class="block-authors">
+			<button type="button" class="btn btn-success button ath-button" [routerLink]="['author']">Додати автора</button>
+			<div class="list" *ngFor="let author of authorList">
+				<span class=info>{{author.lastName}} {{author.name[0]}}. {{author.father[0]}}</span>
 			</div>
 		</div>
-		<!-- <div>
-			<ul *ngFor="let book of bookList">
-				<li>
-					{{book.title}}
-				</li>
-			</ul>
-		</div> -->
-	
-	
-	
-</ng-container>
+		
+
+		<div class="block-quantity">
+			<div class="sub-titles">
+				<span class="sub-titles">Кіл. книжок</span>
+			</div>
+			
+			<div class="list" *ngFor="let author of authorList">
+				<span class="info">{{author.quantity}}</span>
+			</div>
+		</div>
+		
+
+		<div class="block-buttons">
+			<div class="sub-titles">
+				<span>Умови</span>
+			</div>
+			
+			<div  *ngFor="let author of authorList">
+				<button type="button" class="btn btn-outline-primary"
+						[routerLink]="['author', author.id]">Редагувати</button>
+				<button type="button" class="btn btn-outline-danger"
+						(click)="deleteAuthor(author.id)">Видалити</button>
+					<button type="button" class="btn btn-outline-info" (click)="detailAuthor(author.id)">Деталі</button>
+				
+			</div>
+		</div>
+	</div>
+
+	</div>
 
 
