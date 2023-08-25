@@ -1,37 +1,29 @@
-
-
-
-
 <div class="container">
-  <h2>Редагування</h2>
-	
+<h2>Редагування</h2>
 <div *ngIf="authors$ | async as authors" class="list" >
-
-	<div class="edit-author">
+  <div class="edit-author">
 		<div class="block-author">
 			<div class="each">
 				<span><i>Прізвище</i></span>
-				<input #lastNameVal type="text" class="form-control" placeholder="Прізвище" value="{{authors.lastName}}">
+				<input  #lastNameVal type="text" class="form-control" placeholder="Прізвище" value="{{authors.lastName}}">
 			</div>
 			<div class="each">
 				<span><i>Ім'я</i></span>
-				<input #nameVal type="text" class="form-control" placeholder="Ім'я" value="{{authors.name}}">
+				<input  #nameVal type="text" class="form-control" placeholder="Ім'я" value="{{authors.name}}">
 			</div>
 			<div class="each">
 				<span><i>По батькові</i></span>
-				<input #father type="text" class="form-control" placeholder="По батькові" value="{{authors.father}}">
+				<input  #father type="text" class="form-control" placeholder="По батькові" value="{{authors.father}}">
 			</div>
 			<div class="each">
 				<span><i>Дата народж.</i></span>
-				<input #dateBorn type="text" class="form-control" placeholder="Дата народження" value="{{authors.dateBorn}}">
+				<input  #dateBorn type="text" class="form-control" placeholder="Дата народження" value="{{authors.dateBorn}}">
 			</div>
 		</div>
 		<div class="btn-author">
-			
-				<button (click)="toMain()"  type="button" class="btn btn-outline-primary">На головну</button>
-				<button (click)="editsAuthor(authors.id, lastNameVal.value, nameVal.value, father.value, dateBorn.value)" type="button"
-					class="btn btn-outline-dark light">Змінити</button>
-			
+			<button (click)="toMain()"  type="button" class="btn btn-outline-primary">На головну</button>
+			<button (click)="editsAuthor(authors.id, lastNameVal.value, nameVal.value, father.value, dateBorn.value)" type="button"
+					class="btn btn-outline-dark light btn-change">Змінити</button>
 		</div>
 	</div>
 	<div class="book-list">
@@ -39,17 +31,11 @@
 				<span>Книжка: </span>
 				<a [routerLink]="['book']"><i>Додати</i></a>
 			</div>
-			
-
-			
-
-		
-
 			<div *ngFor="let book of booksList" class="blockbook">
 				<div class="allbooks">
-					<input #title type="text" class="form-control" placeholder="Add exercise" value="{{book.title}}">
-					<input #genre type="text" class="form-control" placeholder="Add exercise" value="{{book.genre}}">
-					<input #pages type="text" class="form-control" placeholder="Add exercise" value="{{book.pages}}c.">
+					<input class="books-info" #title type="text" class="form-control" placeholder="Add exercise" value="{{book.title}}">
+					<input class="books-info" #genre type="text" class="form-control" placeholder="Add exercise" value="{{book.genre}}">
+					<input class="books-info" #pages type="text" class="form-control" placeholder="Add exercise" value="{{book.pages}}c.">
 				</div>
 				<div class="btnblock">
 					<div class="bookbtn">
@@ -59,13 +45,6 @@
 					</div>
 				</div>
 			</div>
-
-
-
-			</div>
+    </div>
 	</div>
-	
-
-	
-	
 </div>

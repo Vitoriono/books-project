@@ -11,8 +11,7 @@
 				characters.
 			</p>
 		</div>
-
-		<input required formControlName="pages" type="text" class="form-control" id="inputName" placeholder="Кіл. сторінок" />
+    <input required formControlName="pages" type="text" class="form-control" id="inputName" placeholder="Кіл. сторінок" />
 		<div id="placeholder" *ngIf=" bookForm.controls.pages.invalid && bookForm.controls.pages.touched">
 			<p *ngIf="bookForm.controls.pages.errors?.required">
 				*Required field!
@@ -23,8 +22,7 @@
 				characters.
 			</p>
 		</div>
-
-		<div class="input-group mb-3 genre">
+    <div class="input-group mb-3 genre">
 			<div class="genre-label">
 				<label for="">Жанри книжок:</label>
 			</div>

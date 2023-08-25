@@ -11,19 +11,6 @@
   flex-direction: column;
 }
 
-
-@media (max-width: 480px) {
-.container {
-    max-width: 450px;
-  }
-
-// .block-author{
-//   max-width: 100px;
-// }  
-}
-
-
-
 input {
   width: 350px;
 }
@@ -67,6 +54,42 @@ input {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 430px;
+  }
+
+  input {
+    width: 250px;
+  }
+
+  .each {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn-author {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-change {
+    margin-left: 20px;
+  }
+
+  .blockbook {
+    padding: 7px;
+    margin: 10px 0px 10px 0;
+    display: flex;
+    justify-content: center;
+    max-width: 380px;
+  }
+  .books-info {
+    margin-left: -50px;
+  }
 }
 
 .spinner {

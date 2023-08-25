@@ -61,6 +61,4 @@ export class MainComponent implements OnInit {
       this.getAllAuthors();
     });
   }
-
-
 }

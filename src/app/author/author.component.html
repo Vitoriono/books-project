@@ -1,7 +1,6 @@
 <div class="text-center container">
 	<form novalidate [formGroup]="authorForm" (ngSubmit)="onSubmit(authorForm)">
-		
-		<h1 class="h3 mb-3 fw-normal">Додайте автора!</h1>
+	  <h1 class="h3 mb-3 fw-normal">Додайте автора!</h1>
 		<input required formControlName="lastName" type="text" class="form-control form-gap " id="inputLastName"
 			placeholder="Прізвище" />
 		<div id="placeholder" *ngIf="authorForm.controls.lastName.invalid && authorForm.controls.lastName.touched">
@@ -26,7 +25,6 @@
 		</div>
 		<input formControlName="father" type="text" class="form-control form-gap" id="inputFather"
 			placeholder="По батькові" />
-		
 		<input required formControlName="dateBorn" type="text" class="form-control form-gap" id="inputDateBorn"
 			placeholder="Прізвище" />
 		<div id="placeholder" *ngIf="authorForm.controls.dateBorn.invalid && authorForm.controls.dateBorn.touched">

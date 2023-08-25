@@ -5,51 +5,37 @@
 		</div>
 	</div>
 </div>
-
-
 <div class="container" *ngIf="!loading">
 	<div>
 		<h1 class="h3 mb-3 fw-normal">Книжкова полиця</h1>
 	</div>
-		
-	
 	<div class="sub-container">
-
-
-		<div class="block-authors">
+    <div class="block-authors">
 			<button type="button" class="btn btn-success button ath-button" [routerLink]="['author']">Додати автора</button>
 			<div class="list" *ngFor="let author of authorList">
 				<span class=info>{{author.lastName}} {{author.name[0]}}. {{author.father[0]}}</span>
 			</div>
 		</div>
-		
-
 		<div class="block-quantity">
 			<div class="sub-titles">
 				<span class="sub-titles">Кіл. книжок</span>
 			</div>
-			
 			<div class="list" *ngFor="let author of authorList">
 				<span class="info">{{author.quantity}}</span>
 			</div>
 		</div>
-		
-
-		<div class="block-buttons">
+	  <div class="block-buttons">
 			<div class="sub-titles">
 				<span>Умови</span>
 			</div>
-			
 			<div  *ngFor="let author of authorList">
 				<button type="button" class="btn btn-outline-primary"
 						[routerLink]="['author', author.id]">Редагувати</button>
 				<button type="button" class="btn btn-outline-danger"
 						(click)="deleteAuthor(author.id)">Видалити</button>
-				
-			</div>
-		</div>
+				</div>
+	  </div>
 	</div>
-
-	</div>
+</div>
 
 

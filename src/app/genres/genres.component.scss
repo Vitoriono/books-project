@@ -19,6 +19,17 @@ button {
   color: white;
 }
 
+@media (max-width: 480px) {
+  .container {
+    max-width: 470px;
+  }
+
+  input {
+    height: 50px;
+    width: 370px;
+  }
+}
+
 button:hover {
   color: white;
   background-color: rgb(59, 5, 51);
